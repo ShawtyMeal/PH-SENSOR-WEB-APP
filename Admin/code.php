@@ -134,7 +134,66 @@ if(isset($_POST['enable_disable_acc_btn']))
     }
 }
 
+//UPDATE USER PROFILE
 
+if(isset($_POST['update_user_profile']))
+{
+
+    $display_name = $_POST['display_name'];
+    $phone = $_POST['phone'];
+    $profile = $_FILES['profiles']['name'];
+    $random_no = rand(1111,9999);
+
+    $uid = $_SESSION['verified_user_id'];
+    $user = $auth->getUser($uid);
+
+    $new_image = $random_no.$profile;
+    $old_image = $user->photoUrl;
+
+    if($profile != NULL)
+    {
+        $file_name = 'uploads/'.$new_image;
+    }
+    else
+    {
+        $file_name = $old_image;
+    }
+
+    $properties = [
+        'displayName' => $display_name,
+        'phoneNumber' => $phone,
+        'photoUrl' => $file_name,
+
+    ];
+
+    $updatedUser = $auth->updateUser($uid, $properties);
+
+    if($updatedUser)
+    {
+
+    if($profile != NULL)
+        {
+            move_uploaded_file($_FILES['profile']['tmp_name'], "uploads/".$new_image);
+            $file_name = 'upload/'.$old_image;
+            if($old_image != NULL)
+            {
+                unlink($old_image);
+            }
+        }
+        $_SESSION['status'] = "User Profile Updated Successfully";
+        header('Location: my-profile.php');
+        exit(0);
+
+    }
+    else
+    {
+        $_SESSION['status'] = "User Profile Failed to Updated";
+        header('Location: my-profile.php');
+        exit(0);
+
+    }
+
+}
 
 
 

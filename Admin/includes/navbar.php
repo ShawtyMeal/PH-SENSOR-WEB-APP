@@ -56,15 +56,55 @@
           <i id="darkModeButton" i class="fa-regular fa-moon"></i>
         </a>
       </li>
-      <!-- LOGOUT -->
+
+      <?php
+        include('../dbcon.php');
+
+        $uid = $_SESSION['verified_user_id'];
+        $user = $auth->getUser($uid);
+        ?>
+
+
+      <li class="nav-item dropdown user user-menu">
+  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+    <img src="dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+    <span class="hidden-xs"><?=$user->displayName;?></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    <!-- User image -->
+    <li class="user-header bg-primary">
+      <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      <p>
+        <?=$user->displayName;?>
+        <small>Member since Nov. 2012</small>
+      </p>
+    </li>
+    <!-- Menu Footer -->
+    <li class="user-footer">
+      <div class="text mt-3"> <!-- Use text-left class instead of pull-left -->
+        <a href="my-profile.php" class="btn btn-default btn-flat">Profile</a>
+        <a href="../logout.php " class="btn btn-default btn-flat float-right">Sign out</a>
+      </div>
+    </li>
+  </ul>
+</li>
+
+
+
+
+  </ul>
+  </nav>
+      <!-- LOGOUT
       <li class="nav-item dropdown">
         <a class="nav-link" href="../logout.php">
           <i class="fa-solid fa-right-from-bracket"></i>
         </a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
   <!-- /.navbar -->
+
+
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -82,12 +122,7 @@
           <img src="pics/arce.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <?php
-        include('../dbcon.php');
 
-        $uid = $_SESSION['verified_user_id'];
-        $user = $auth->getUser($uid);
-        ?>
         <a href="#" class="d-block">Hi! <?=$user->displayName;?></a>
         </div>
       </div>

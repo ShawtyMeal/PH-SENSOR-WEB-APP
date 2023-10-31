@@ -20,6 +20,7 @@ include('includes/navbar.php');
                     <div class="col-sm-12">
 
 
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 mt-5">
                         <div class="card-header py-3">
@@ -58,9 +59,8 @@ include('includes/navbar.php');
                                         <td><?=$user->phoneNumber;?></td>
                                         <td><?=$user->email;?></td>
                                         <td>
-                                        <span class="border bg-warning p-2">
+                                        <span class="badge bg-success">
                                             <?php
-
                                             $claims = $auth->getUser($user -> uid)->customClaims;
 
                                             if(isset($claims['admin']) == true)
@@ -69,7 +69,7 @@ include('includes/navbar.php');
                                             }
                                             elseif(isset($claims['gardener']) == true)
                                             {
-                                                echo "gardener";
+                                                echo "Gardener";
                                             }
                                             elseif($claims == null)
                                             {
@@ -87,14 +87,12 @@ include('includes/navbar.php');
                                             else{
                                                 echo "Enabled";
                                             }
-
-
                                             ?>
                                         </td>
 
                                         <td>
 
-                                        <a href="user_edit.php?id=<?=$user -> uid;?>" class="btn btn-primary btn-sm">Edit </a>
+                                        <a href="user_edit.php?id=<?=$user -> uid;?>" class="btn btn-primary">Edit </a>
                                         </td>
 
                                         </td>
