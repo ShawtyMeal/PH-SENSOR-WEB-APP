@@ -141,7 +141,7 @@ if(isset($_POST['update_user_profile']))
 
     $display_name = $_POST['display_name'];
     $phone = $_POST['phone'];
-    $profile = $_FILES['profiles']['name'];
+    $profile = $_FILES['profile']['name'];
     $random_no = rand(1111,9999);
 
     $uid = $_SESSION['verified_user_id'];
@@ -174,7 +174,7 @@ if(isset($_POST['update_user_profile']))
     if($profile != NULL)
         {
             move_uploaded_file($_FILES['profile']['tmp_name'], "uploads/".$new_image);
-            $file_name = 'upload/'.$old_image;
+            $file_name = 'uploads/'.$old_image;
             if($old_image != NULL)
             {
                 unlink($old_image);

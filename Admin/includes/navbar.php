@@ -65,15 +65,27 @@
         ?>
 
 
-      <li class="nav-item dropdown user user-menu">
-  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-    <img src="dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
-    <span class="hidden-xs"><?=$user->displayName;?></span>
-  </a>
+<li class="nav-item dropdown user user-menu">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+        <?php if ($user->photoUrl !== null) : ?>
+            <img src="<?= $user->photoUrl ?>" class="user-image img-circle elevation-2" alt="User Image">
+        <?php else : ?>
+            <img src="dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+        <?php endif; ?>
+        <span class="hidden-xs"><?= $user->displayName; ?></span>
+    </a>
+
+
+
+
   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
     <!-- User image -->
     <li class="user-header bg-primary">
-      <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+    <?php if ($user->photoUrl !== null) : ?>
+      <img src="<?=$user->photoUrl?>" class="img-circle elevation-2" alt="User Image">
+      <?php else : ?>
+      <img src="dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+      <?php endif; ?>
       <p>
         <?=$user->displayName;?>
         <small>Member since Nov. 2012</small>
@@ -119,11 +131,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="pics/arce.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-
-        <a href="#" class="d-block">Hi! <?=$user->displayName;?></a>
+        <div class="info text-white">
+          PH-WATER-WEB-APP
         </div>
       </div>
 

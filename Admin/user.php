@@ -59,17 +59,16 @@ include('includes/navbar.php');
                                         <td><?=$user->phoneNumber;?></td>
                                         <td><?=$user->email;?></td>
                                         <td>
-                                        <span class="badge bg-success">
                                             <?php
                                             $claims = $auth->getUser($user -> uid)->customClaims;
 
                                             if(isset($claims['admin']) == true)
                                             {
-                                                echo "Admin";
+                                                echo '<span class="badge bg-warning">Admin</span>';
                                             }
                                             elseif(isset($claims['gardener']) == true)
                                             {
-                                                echo "Gardener";
+                                                echo '<span class="badge bg-success">Gardener</span>';
                                             }
                                             elseif($claims == null)
                                             {

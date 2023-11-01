@@ -9,6 +9,13 @@ include('includes/navbar.php');
     <div class="row">
         <div class="col-md-12">
             <div class="card  mt-5">
+            <?php
+            if(isset($_SESSION['status']))
+            {
+                echo "<h5 class='alert alert-success'>".$_SESSION['status']."</h5>";
+                unset($_SESSION['status']);
+            }
+            ?>
                 <div class="card-header">
                     My Profile
                 </div>
@@ -22,7 +29,7 @@ include('includes/navbar.php');
                     $user = $auth->getUser($uid);
                     ?>
 
-                <form action="code.php" method="POST" entype="multipart/form-data">
+                <form action="code.php" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-md-8 boarder-end">
