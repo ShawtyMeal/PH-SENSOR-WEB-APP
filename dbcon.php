@@ -5,8 +5,8 @@ use Kreait\Firebase\Factory;
 use Kreait\Firebase\Auth;
 
 $factory = (new Factory)
-    ->withServiceAccount('ph-sensor-web-app-firebase-adminsdk-1ed6k-fefcd2b805.json')
-    ->withDatabaseUri('https://ph-sensor-web-app-default-rtdb.firebaseio.com/');
+    ->withServiceAccount('ph-sensor-web-app-964ad-firebase-adminsdk-6qo24-211df39793.json')
+    ->withDatabaseUri('https://ph-sensor-web-app-964ad-default-rtdb.firebaseio.com/');
 
     $database = $factory->createDatabase();
     $auth = $factory->createAuth();
