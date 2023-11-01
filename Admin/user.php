@@ -31,8 +31,8 @@ include('includes/navbar.php');
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
-                                        <th>NO#</th>
+                                        <tr class="text-center">
+                                        <th>User ID</th>
                                         <th>Full Name</th>
                                         <th>Phone</th>
                                         <th>Email</th>
@@ -52,9 +52,11 @@ include('includes/navbar.php');
                                 foreach ($users as $user)
                                 {
                                     ?>
-
-                                    <tr>
-                                        <td><?=$i++;?></td>
+                                    <a href="#id">
+                                    <img src="" alt="">
+                                    </a>
+                                    <tr class="text-center">
+                                        <td><?=$user->uid;?></td>
                                         <td><?=$user->displayName;?></td>
                                         <td><?=$user->phoneNumber;?></td>
                                         <td><?=$user->email;?></td>

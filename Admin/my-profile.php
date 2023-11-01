@@ -94,8 +94,21 @@ include('includes/navbar.php');
                                 </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                <label for="">Password</label>
+                                <input type="password" name="password" value="<?=$user->passwordHash;?>" required class="form-control" readonly>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-4 mx-auto">
+                                <a href="change-password.php?id=<?=$user -> uid;?>" class="form-control btn btn-success">Change Password</a>
+                            </div>
+                            </div>
+                            </div>
+
                         <div class="col-md-4">
                             <div class="form-group border mb-3">
                                 <?php

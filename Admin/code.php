@@ -195,6 +195,40 @@ if(isset($_POST['update_user_profile']))
 
 }
 
+//CHANGE PASSWORD OF USER
+if(isset($_POST['change_password_btn']))
+{
+    $new_password = $_POST['new_password'];
+    $retype_password = $_POST['retype_password'];
+    $uid = $_POST['change_pwd_user_id'];
+
+    if($new_password == $retype_password)
+    {
+
+    $updatedUser = $auth->changeUserPassword($uid, $new_password);
+
+    if($updatedUser)
+    {
+        $_SESSION['status'] = "Password Updated Successfully";
+        header('Location: change-password.php');
+        exit();
+    }else{
+        $_SESSION['status'] = "Password Failed to Update";
+        header('Location: change-password.php');
+        exit();
+    }
+
+    }
+    else{
+        $_SESSION['status'] = "New Password and Re-Type Password does not match";
+        header("Location: user-edit.php?id=$uid");
+        exit();
+    }
+}
+
+
+
+
 
 
 ?>
